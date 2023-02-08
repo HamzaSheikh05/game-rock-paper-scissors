@@ -46,14 +46,12 @@ function game() {
       console.log(`Round: ${i}
       Player selection is: ${playerSelection}
       Computer selection is: ${computerSelection}`);
-
       console.log(playRound(playerSelection, computerSelection));
     } else if (playerSelection === "papers" || playerSelection === "paper") {
       playerSelection = "paper";
       console.log(`Round: ${i}
       Player selection is: ${playerSelection}
       Computer selection is: ${computerSelection}`);
-
       console.log(playRound(playerSelection, computerSelection));
     } else if (
       playerSelection === "scissors" ||
@@ -63,7 +61,6 @@ function game() {
       console.log(`Round: ${i}
       Player selection is: ${playerSelection}
       Computer selection is: ${computerSelection}`);
-
       console.log(playRound(playerSelection, computerSelection));
     } else {
       console.log("Invalid Entry");
@@ -78,6 +75,8 @@ function game() {
 
 const playRequest = function () {
   if (playAgain()) {
+    playerScore = 0;
+    computerScore = 0;
     return game();
   } else {
     alert(`Thank You for playing!
@@ -87,25 +86,38 @@ const playRequest = function () {
        Total Game Wins by Player: ${playerWins} 
        Total Game Wins by Computer: ${computerWins}
 
-       ${message}`);
+       Current Game: ${message}
+       
+       ${finalWinner()}`);
   }
 };
 
 function scoreCard() {
   if (playerScore > computerScore) {
-    message = "Congratulations! You won!!!";
+    message = "Congratulations! You won the current game!!!";
     console.log(message);
     playerWins++;
-    playRequest();
+    //playRequest();
   } else if (playerScore === computerScore) {
     message = `You tied with the Computer. Try Again!`;
     console.log(message);
-    playRequest();
+    //playRequest();
   } else {
-    message = "Loser! Computer wins the game ;(";
+    message = "Loser! Computer wins the current game ;(";
     console.log(message);
     computerWins++;
-    playRequest();
+    //playRequest();
+  }
+  playRequest();
+}
+
+function finalWinner() {
+  if (playerWins > computerWins) {
+    return `You won the majority of games!`;
+  } else if (computerWins > playerWins) {
+    return `Computer won the majority of games!`;
+  } else {
+    return `You and Computer Tied!`;
   }
 }
 
