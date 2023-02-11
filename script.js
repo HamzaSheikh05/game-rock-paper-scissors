@@ -80,7 +80,7 @@ const playRequest = function () {
     return game();
   } else {
     alert(`Thank You for playing!
-       The Round score is: 
+       The Game score is: 
        Player: ${playerScore} - Computer: ${computerScore} 
 
        Total Game Wins by Player: ${playerWins} 
@@ -94,19 +94,16 @@ const playRequest = function () {
 
 function scoreCard() {
   if (playerScore > computerScore) {
-    message = "Congratulations! You won the current game!!!";
+    message = "Congratulations! You won the game!!!";
     console.log(message);
     playerWins++;
-    //playRequest();
   } else if (playerScore === computerScore) {
     message = `You tied with the Computer. Try Again!`;
     console.log(message);
-    //playRequest();
   } else {
-    message = "Loser! Computer wins the current game ;(";
+    message = "Loser! Computer wins the game ;(";
     console.log(message);
     computerWins++;
-    //playRequest();
   }
   playRequest();
 }
@@ -124,5 +121,5 @@ function finalWinner() {
 const playAgain = function () {
   return window.confirm("Do you want to play another round?");
 };
-// Starts the game
+
 game();
